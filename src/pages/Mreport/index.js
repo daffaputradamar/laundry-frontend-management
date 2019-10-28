@@ -48,42 +48,42 @@ export default class Mreports extends React.Component {
 
     Promise.all([
       axios.get(
-        `https://laundry-microservice-users.herokuapp.com/api/v1/mreports_item/outcome2?m=${
+        `http://localhost:3001/api/v1/mreports_item/outcome2?m=${
           this.state.method
         }&y=${this.state.value}`
       ),
       axios.get(
-        `https://laundry-microservice-users.herokuapp.com/api/v1/mreports_item/salary?m=${
+        `http://localhost:3001/api/v1/mreports_item/salary?m=${
           this.state.method
         }&y=${this.state.value}`
       ),
       axios.get(
-        `https://laundry-microservice-users.herokuapp.com/api/v1/mreports_item/item?m=${
+        `http://localhost:3001/api/v1/mreports_item/item?m=${
           this.state.method
         }&y=${this.state.value}`
       ),
       axios.get(
-        `https://laundry-microservice-users.herokuapp.com/api/v1/mreports_item/pemasukan?m=${
+        `http://localhost:3001/api/v1/mreports_item/pemasukan?m=${
           this.state.method
         }&y=${this.state.value}`
       ),
       axios.get(
-        `https://laundry-microservice-users.herokuapp.com/api/v1/mreports/outcome?m=${
+        `http://localhost:3001/api/v1/mreports/outcome?m=${
           this.state.method
         }&y=${this.state.value}`
       ),
       axios.get(
-        `https://laundry-microservice-users.herokuapp.com/api/v1/mreports/item?m=${
+        `http://localhost:3001/api/v1/mreports/item?m=${
           this.state.method
         }&y=${this.state.value}`
       ),
       axios.get(
-        `https://laundry-microservice-users.herokuapp.com/api/v1/mreports/salary?m=${
+        `http://localhost:3001/api/v1/mreports/salary?m=${
           this.state.method
         }&y=${this.state.value}`
       ),
       axios.get(
-        `https://laundry-microservice-users.herokuapp.com/api/v1/mreports3/pengeluaran?m=${
+        `http://localhost:3001/api/v1/mreports3/pengeluaran?m=${
           this.state.method
         }&y=${this.state.value}`
       )

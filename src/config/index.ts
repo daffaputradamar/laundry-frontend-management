@@ -1,8 +1,8 @@
 export const serviceMember =
-  "https://laundry-microservice-members.herokuapp.com/"
+  "http://localhost:3004/"
 export const serviceDiskon =
-  "https://laundry-microservice-diskon.herokuapp.com/"
-export const serviceItem = "https://laundry-microservice-items.herokuapp.com/"
+  "http://localhost:3005/"
+export const serviceItem = "http://localhost:3003/"
 export const serviceTransact =
-  "https://laundry-microservice-transact.herokuapp.com/"
-export const serviceUser = "https://laundry-microservice-users.herokuapp.com/"
+  "http://localhost:3002/"
+export const serviceUser = "http://localhost:3001/"

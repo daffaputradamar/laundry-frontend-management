@@ -19,19 +19,19 @@ export default class Daskasir extends React.Component {
   componentDidMount() {
     Promise.all([
       axios.get(
-        `https://laundry-microservice-users.herokuapp.com/api/v1/dashboards/pemasukan/`
+        `http://localhost:3001/api/v1/dashboards/pemasukan/`
       ),
       axios.get(
-        `https://laundry-microservice-users.herokuapp.com/api/v1/dashboards/layanan/`
+        `http://localhost:3001/api/v1/dashboards/layanan/`
       ),
       axios.get(
-        `https://laundry-microservice-users.herokuapp.com/api/v1/dashboards/proses/`
+        `http://localhost:3001/api/v1/dashboards/proses/`
       ),
       axios.get(
-        `https://laundry-microservice-transact.herokuapp.com/api/v1/transactions/`
+        `http://localhost:3002/api/v1/transactions/`
       ),
       axios.get(
-        `https://laundry-microservice-items.herokuapp.com/api/v1/items/show_item/`
+        `http://localhost:3003/api/v1/items/show_item/`
       )
     ])
       .then(([res1, res2, res3, res4, res5]) =>

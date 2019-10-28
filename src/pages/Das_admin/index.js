@@ -19,19 +19,19 @@ export default class Dasadmin extends React.Component {
   componentDidMount() {
     Promise.all([
       axios.get(
-        `https://laundry-microservice-users.herokuapp.com/api/v1/dashboards/pemasukan/`
+        `http://localhost:3001/api/v1/dashboards/pemasukan/`
       ),
       axios.get(
-        `http://laundry-microservice-users.herokuapp.com/api/v1/mreports_item/salary?m=5&y=2019`
+        `http://localhost:3001/api/v1/mreports_item/salary?m=5&y=2019`
       ),
       axios.get(
-        `http://laundry-microservice-users.herokuapp.com/api/v1/mreports_item/outcome?m=5&y=2019`
+        `http://localhost:3001/api/v1/mreports_item/outcome?m=5&y=2019`
       ),
       axios.get(
-        `https://laundry-microservice-transact.herokuapp.com/api/v1/transactions/`
+        `http://localhost:3002/api/v1/transactions/`
       ),
       axios.get(
-        `http://laundry-microservice-users.herokuapp.com/api/v1/mreports_item/item?m=5&y=2019`
+        `http://localhost:3001/api/v1/mreports_item/item?m=5&y=2019`
       )
     ])
       .then(([res1, res2, res3, res4, res5]) =>

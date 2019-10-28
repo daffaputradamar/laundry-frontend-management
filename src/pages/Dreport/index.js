@@ -45,27 +45,27 @@ export default class Dreports extends React.Component {
 
     Promise.all([
       axios.get(
-        `https://laundry-microservice-users.herokuapp.com/api/v1/dreports_new/outcome?dateIn=${
+        `http://localhost:3001/api/v1/dreports_new/outcome?dateIn=${
           this.state.datein
         }&dateOut=${this.state.dateout}`
       ),
       axios.get(
-        `https://laundry-microservice-users.herokuapp.com/api/v1/dreports_new/salary?dateIn=${
+        `http://localhost:3001/api/v1/dreports_new/salary?dateIn=${
           this.state.datein
         }&dateOut=${this.state.dateout}`
       ),
       axios.get(
-        `https://laundry-microservice-users.herokuapp.com/api/v1/dreports_new/item?dateIn=${
+        `http://localhost:3001/api/v1/dreports_new/item?dateIn=${
           this.state.datein
         }&dateOut=${this.state.dateout}`
       ),
       axios.get(
-        `https://laundry-microservice-users.herokuapp.com/api/v1/dreports_new/pemasukan?dateIn=${
+        `http://localhost:3001/api/v1/dreports_new/pemasukan?dateIn=${
           this.state.datein
         }&dateOut=${this.state.dateout}`
       ),
       axios.get(
-        `https://laundry-microservice-users.herokuapp.com/api/v1/dreports3/pengeluaran?dateIn=${
+        `http://localhost:3001/api/v1/dreports3/pengeluaran?dateIn=${
           this.state.datein
         }&dateOut=${this.state.dateout}`
       )
