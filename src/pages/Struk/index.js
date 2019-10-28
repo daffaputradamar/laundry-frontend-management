@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import { serviceUser } from "../../config";
+
 import ReactDOM from "react-dom";
 import axios from "axios";
 import {
@@ -21,24 +23,21 @@ function App() {
   const [resp, setGitData] = useState({ data: [], repos: [] });
 
   useEffect(() => {
-    let username
-    
+    let username;
+
     if (JSON.parse(localStorage.getItem("transaction"))) {
       username = JSON.parse(localStorage.getItem("transaction")).invoice;
     } else {
-      username = JSON.parse(localStorage.getItem("transaction"))
+      username = JSON.parse(localStorage.getItem("transaction"));
     }
 
     const fetchData = async () => {
       const respGlobal = await axios(
-        `http://localhost:3001/api/v1/transacts/transaksi?i=${username}`
+        `${serviceUser}/api/v1/transacts/transaksi?i=${username}`
       );
-      // const respRepos = await axios(
-      //   `http://localhost:3002/api/v1/details/search/${username}`
-      // )
 
       const respRepos = await axios(
-        `http://localhost:3001/api/v1/totals/bayar?i=${username}`
+        `${serviceUser}/api/v1/totals/bayar?i=${username}`
       );
 
       setGitData({

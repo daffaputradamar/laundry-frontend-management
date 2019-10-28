@@ -5,6 +5,8 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 
+import { serviceUser } from "../../config";
+
 import { Header, Button, Container, Form, Table } from "semantic-ui-react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
@@ -45,29 +47,19 @@ export default class Dreports extends React.Component {
 
     Promise.all([
       axios.get(
-        `http://localhost:3001/api/v1/dreports_new/outcome?dateIn=${
-          this.state.datein
-        }&dateOut=${this.state.dateout}`
+        `${serviceUser}/api/v1/dreports_new/outcome?dateIn=${this.state.datein}&dateOut=${this.state.dateout}`
       ),
       axios.get(
-        `http://localhost:3001/api/v1/dreports_new/salary?dateIn=${
-          this.state.datein
-        }&dateOut=${this.state.dateout}`
+        `${serviceUser}/api/v1/dreports_new/salary?dateIn=${this.state.datein}&dateOut=${this.state.dateout}`
       ),
       axios.get(
-        `http://localhost:3001/api/v1/dreports_new/item?dateIn=${
-          this.state.datein
-        }&dateOut=${this.state.dateout}`
+        `${serviceUser}/api/v1/dreports_new/item?dateIn=${this.state.datein}&dateOut=${this.state.dateout}`
       ),
       axios.get(
-        `http://localhost:3001/api/v1/dreports_new/pemasukan?dateIn=${
-          this.state.datein
-        }&dateOut=${this.state.dateout}`
+        `${serviceUser}/api/v1/dreports_new/pemasukan?dateIn=${this.state.datein}&dateOut=${this.state.dateout}`
       ),
       axios.get(
-        `http://localhost:3001/api/v1/dreports3/pengeluaran?dateIn=${
-          this.state.datein
-        }&dateOut=${this.state.dateout}`
+        `${serviceUser}/api/v1/dreports3/pengeluaran?dateIn=${this.state.datein}&dateOut=${this.state.dateout}`
       )
     ])
       .then(([res1, res2, res3, res4, res5]) =>

@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { serviceUser } from "../../config";
+
 import {
   Grid,
   Segment,
@@ -48,44 +50,28 @@ export default class Mreports extends React.Component {
 
     Promise.all([
       axios.get(
-        `http://localhost:3001/api/v1/mreports_item/outcome2?m=${
-          this.state.method
-        }&y=${this.state.value}`
+        `${serviceUser}/api/v1/mreports_item/outcome2?m=${this.state.method}&y=${this.state.value}`
       ),
       axios.get(
-        `http://localhost:3001/api/v1/mreports_item/salary?m=${
-          this.state.method
-        }&y=${this.state.value}`
+        `${serviceUser}/api/v1/mreports_item/salary?m=${this.state.method}&y=${this.state.value}`
       ),
       axios.get(
-        `http://localhost:3001/api/v1/mreports_item/item?m=${
-          this.state.method
-        }&y=${this.state.value}`
+        `${serviceUser}/api/v1/mreports_item/item?m=${this.state.method}&y=${this.state.value}`
       ),
       axios.get(
-        `http://localhost:3001/api/v1/mreports_item/pemasukan?m=${
-          this.state.method
-        }&y=${this.state.value}`
+        `${serviceUser}/api/v1/mreports_item/pemasukan?m=${this.state.method}&y=${this.state.value}`
       ),
       axios.get(
-        `http://localhost:3001/api/v1/mreports/outcome?m=${
-          this.state.method
-        }&y=${this.state.value}`
+        `${serviceUser}/api/v1/mreports/outcome?m=${this.state.method}&y=${this.state.value}`
       ),
       axios.get(
-        `http://localhost:3001/api/v1/mreports/item?m=${
-          this.state.method
-        }&y=${this.state.value}`
+        `${serviceUser}/api/v1/mreports/item?m=${this.state.method}&y=${this.state.value}`
       ),
       axios.get(
-        `http://localhost:3001/api/v1/mreports/salary?m=${
-          this.state.method
-        }&y=${this.state.value}`
+        `${serviceUser}/api/v1/mreports/salary?m=${this.state.method}&y=${this.state.value}`
       ),
       axios.get(
-        `http://localhost:3001/api/v1/mreports3/pengeluaran?m=${
-          this.state.method
-        }&y=${this.state.value}`
+        `${serviceUser}/api/v1/mreports3/pengeluaran?m=${this.state.method}&y=${this.state.value}`
       )
     ])
       .then(([res1, res2, res3, res4, res5, res6, res7, res8]) =>

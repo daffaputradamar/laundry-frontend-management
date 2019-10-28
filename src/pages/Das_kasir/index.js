@@ -2,6 +2,8 @@ import React from "react";
 
 import axios from "axios";
 
+import { serviceUser, serviceTransact, serviceItem } from "../../config";
+
 import { Header, Container, Table, Grid, Segment } from "semantic-ui-react";
 
 export default class Daskasir extends React.Component {
@@ -18,21 +20,11 @@ export default class Daskasir extends React.Component {
 
   componentDidMount() {
     Promise.all([
-      axios.get(
-        `http://localhost:3001/api/v1/dashboards/pemasukan/`
-      ),
-      axios.get(
-        `http://localhost:3001/api/v1/dashboards/layanan/`
-      ),
-      axios.get(
-        `http://localhost:3001/api/v1/dashboards/proses/`
-      ),
-      axios.get(
-        `http://localhost:3002/api/v1/transactions/`
-      ),
-      axios.get(
-        `http://localhost:3003/api/v1/items/show_item/`
-      )
+      axios.get(`${serviceUser}/api/v1/dashboards/pemasukan/`),
+      axios.get(`${serviceUser}/api/v1/dashboards/layanan/`),
+      axios.get(`${serviceUser}/api/v1/dashboards/proses/`),
+      axios.get(`${serviceTransact}/api/v1/transactions/`),
+      axios.get(`${serviceItem}/api/v1/items/show_item/`)
     ])
       .then(([res1, res2, res3, res4, res5]) =>
         Promise.all([res1.data, res2.data, res3.data, res4.data, res5.data])
