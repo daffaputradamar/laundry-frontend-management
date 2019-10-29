@@ -54,16 +54,16 @@ export default class Dreports extends React.Component {
 
     Promise.all([
       axios.get(
-        `${serviceUser}/api/v1/dreports_new/outcome?dateIn=${this.state.datein}&dateOut=${this.state.dateout}`
+        `${serviceUser}/api/v1/dreport/outcome?dateIn=${this.state.datein}&dateOut=${this.state.dateout}`
       ),
       axios.get(
-        `${serviceUser}/api/v1/dreports_new/salary?dateIn=${this.state.datein}&dateOut=${this.state.dateout}`
+        `${serviceUser}/api/v1/dreport/salary?dateIn=${this.state.datein}&dateOut=${this.state.dateout}`
       ),
       axios.get(
-        `${serviceUser}/api/v1/dreports_new/item?dateIn=${this.state.datein}&dateOut=${this.state.dateout}`
+        `${serviceUser}/api/v1/dreport/item?dateIn=${this.state.datein}&dateOut=${this.state.dateout}`
       ),
       axios.get(
-        `${serviceUser}/api/v1/dreports_new/pemasukan?dateIn=${this.state.datein}&dateOut=${this.state.dateout}`
+        `${serviceUser}/api/v1/dreport/pemasukan?dateIn=${this.state.datein}&dateOut=${this.state.dateout}`
       )
     ])
       .then(([res1, res2, res3, res4]) =>

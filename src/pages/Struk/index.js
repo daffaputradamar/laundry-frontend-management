@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { serviceUser } from "../../config";
+import { serviceUser, serviceTransact } from "../../config";
 
 import ReactDOM from "react-dom";
 import axios from "axios";
@@ -33,11 +33,11 @@ function App() {
 
     const fetchData = async () => {
       const respGlobal = await axios(
-        `${serviceUser}/api/v1/transacts/transaksi?i=${username}`
+        `${serviceTransact}/api/v1/transaction/transaksi?i=${username}`
       );
 
       const respRepos = await axios(
-        `${serviceUser}/api/v1/totals/bayar?i=${username}`
+        `${serviceTransact}/api/v1/transaction/bayar?i=${username}`
       );
 
       setGitData({

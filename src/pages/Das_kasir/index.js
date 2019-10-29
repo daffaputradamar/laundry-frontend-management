@@ -20,11 +20,11 @@ export default class Daskasir extends React.Component {
 
   componentDidMount() {
     Promise.all([
-      axios.get(`${serviceUser}/api/v1/dashboards/pemasukan/`),
-      axios.get(`${serviceUser}/api/v1/dashboards/layanan/`),
-      axios.get(`${serviceUser}/api/v1/dashboards/proses/`),
-      axios.get(`${serviceTransact}/api/v1/transactions/`),
-      axios.get(`${serviceItem}/api/v1/items/show_item/`)
+      axios.get(`${serviceUser}/api/v1/dashboard/pemasukan/`),
+      axios.get(`${serviceUser}/api/v1/dashboard/layanan/`),
+      axios.get(`${serviceUser}/api/v1/dashboard/proses/`),
+      axios.get(`${serviceTransact}/api/v1/transaction/`),
+      axios.get(`${serviceItem}/api/v1/item/show_item/`)
     ])
       .then(([res1, res2, res3, res4, res5]) =>
         Promise.all([res1.data, res2.data, res3.data, res4.data, res5.data])

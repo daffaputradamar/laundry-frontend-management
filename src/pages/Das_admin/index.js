@@ -20,11 +20,11 @@ export default class Dasadmin extends React.Component {
 
   componentDidMount() {
     Promise.all([
-      axios.get(`${serviceUser}/api/v1/dashboards/pemasukan/`),
-      axios.get(`${serviceUser}/api/v1/mreports_item/salary?m=5&y=2019`),
-      axios.get(`${serviceUser}/api/v1/mreports_item/outcome?m=5&y=2019`),
-      axios.get(`${serviceTransact}/api/v1/transactions/`),
-      axios.get(`${serviceUser}/api/v1/mreports_item/item?m=5&y=2019`)
+      axios.get(`${serviceUser}/api/v1/dashboard/pemasukan/`),
+      axios.get(`${serviceUser}/api/v1/mreportItem/salary?m=5&y=2019`),
+      axios.get(`${serviceUser}/api/v1/mreportItem/outcome?m=5&y=2019`),
+      axios.get(`${serviceTransact}/api/v1/transaction/`),
+      axios.get(`${serviceUser}/api/v1/mreportItem/item?m=5&y=2019`)
     ])
       .then(([res1, res2, res3, res4, res5]) =>
         Promise.all([res1.data, res2.data, res3.data, res4.data, res5.data])
