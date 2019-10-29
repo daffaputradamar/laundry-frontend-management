@@ -8,7 +8,7 @@ interface ILogin {
 }
 
 export class LoginService extends ServiceGenerator<ILogin> {
-  protected endpoint = serviceUser + "/api/v1/users/login";
+  protected endpoint = serviceUser + "/api/v1/user/login";
 
   public login(username: string, password: string) {
     return new Promise<ILogin>((resolve, reject) => {
