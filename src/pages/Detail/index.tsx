@@ -1,19 +1,19 @@
-import React, { Component, Fragment } from "react"
-import { Header } from "semantic-ui-react"
-import DataTable from "../../components/DataTable"
-import ErrorMessage from "../../components/ErrorMessage"
-import { DetailService } from "../../services/DetailService"
-import { ProcessService } from "../../services/ProcessService"
-import { ServiceService } from "../../services/ServiceService"
-import { TransactionService } from "../../services/TransactionService"
+import React, { Component, Fragment } from "react";
+import { Header } from "semantic-ui-react";
+import DataTable from "../../components/DataTable";
+import ErrorMessage from "../../components/ErrorMessage";
+import { DetailService } from "../../services/DetailService";
+import { ProcessService } from "../../services/ProcessService";
+import { ServiceService } from "../../services/ServiceService";
+import { TransactionService } from "../../services/TransactionService";
 
 interface IState {
-  details: IDetail[]
-  transaction: ITransaction[]
-  services: IService[]
-  processs: IProcess[]
-  loading: boolean
-  error?: Error
+  details: IDetail[];
+  transaction: ITransaction[];
+  services: IService[];
+  processs: IProcess[];
+  loading: boolean;
+  error?: Error;
 }
 
 const fields: IField[] = [
@@ -26,10 +26,9 @@ const fields: IField[] = [
     optionData: {
       data: [],
       textKey: "invoice",
-      valueKey: "_id",
-    },
+      valueKey: "_id"
+    }
   },
-
   {
     name: "service",
     label: "Paket Laundry",
@@ -38,8 +37,8 @@ const fields: IField[] = [
     optionData: {
       data: [],
       textKey: "serviceName",
-      valueKey: "_id",
-    },
+      valueKey: "_id"
+    }
   },
 
   {
@@ -50,21 +49,15 @@ const fields: IField[] = [
     optionData: {
       data: [],
       textKey: "process_name",
-      valueKey: "_id",
-    },
+      valueKey: "_id"
+    }
   },
-
-  // {
-  //   name: "process",
-  //   label: "Proses",
-  //   // validations: ["required"],
-  // },
   {
     name: "qty",
     label: "Jumlah",
-    validations: ["required", "numeric"],
-  },
-]
+    validations: ["required", "numeric"]
+  }
+];
 
 // export default class Idetails extends Component<{}, IState> {
 export default class Detail extends Component<{}, IState> {
@@ -74,75 +67,75 @@ export default class Detail extends Component<{}, IState> {
     transaction: [],
     services: [],
     processs: [],
-    loading: false,
-  }
+    loading: false
+  };
 
-  public detailService = new DetailService()
-  public transactionService = new TransactionService()
-  public serviceService = new ServiceService()
-  public processService = new ProcessService()
+  public detailService = new DetailService();
+  public transactionService = new TransactionService();
+  public serviceService = new ServiceService();
+  public processService = new ProcessService();
 
   public componentDidMount() {
-    this.getDetail()
-    this.getTransaction()
-    this.getMember()
-    this.getProcess()
+    this.getDetail();
+    this.getTransaction();
+    this.getMember();
+    this.getProcess();
   }
 
   public getMember() {
-    this.serviceService.get().then((services) => this.setState({ services }))
+    this.serviceService.get().then(services => this.setState({ services }));
   }
   public getProcess() {
-    this.processService.get().then((processs) => this.setState({ processs }))
+    this.processService.get().then(processs => this.setState({ processs }));
   }
 
   public getTransaction() {
     this.transactionService
       .get()
-      .then((transaction) => this.setState({ transaction }))
+      .then(transaction => this.setState({ transaction }));
   }
 
   public getDetail() {
-    this.setState({ loading: true })
+    this.setState({ loading: true });
     this.detailService
       .get()
-      .then((details) => this.setState({ details }))
-      .catch((error) => this.setState({ error }))
-      .finally(() => this.setState({ loading: false }))
+      .then(details => this.setState({ details }))
+      .catch(error => this.setState({ error }))
+      .finally(() => this.setState({ loading: false }));
   }
 
   public createDetail(input: IDetail) {
-    this.setState({ loading: true })
+    this.setState({ loading: true });
     this.detailService
       .create(input)
       .then(() => this.getDetail())
-      .catch((error) => this.setState({ error, loading: false }))
+      .catch(error => this.setState({ error, loading: false }));
   }
 
   public updateDetail(input: IDetail, id: string) {
-    this.setState({ loading: true })
+    this.setState({ loading: true });
     this.detailService
       .update(input, id)
       .then(() => this.getDetail())
-      .catch((error) => this.setState({ error, loading: false }))
+      .catch(error => this.setState({ error, loading: false }));
   }
 
   public deleteDetail(id: string) {
-    this.setState({ loading: true })
+    this.setState({ loading: true });
     this.detailService
       .delete(id)
       .then(() => this.getDetail())
-      .catch((error) => this.setState({ error, loading: false }))
+      .catch(error => this.setState({ error, loading: false }));
   }
 
   public setOptionsData() {
-    fields[0].optionData!.data = this.state.transaction
-    fields[1].optionData!.data = this.state.services
-    fields[2].optionData!.data = this.state.processs
+    fields[0].optionData!.data = this.state.transaction;
+    fields[1].optionData!.data = this.state.services;
+    fields[2].optionData!.data = this.state.processs;
   }
 
   public render() {
-    this.setOptionsData()
+    this.setOptionsData();
     return (
       <Fragment>
         <Header
@@ -157,11 +150,11 @@ export default class Detail extends Component<{}, IState> {
           data={this.state.details}
           loading={this.state.loading}
           fields={fields}
-          onCreate={(input) => this.createDetail(input)}
-          onUpdate={(input) => this.updateDetail(input, input._id)}
-          onDelete={(input) => this.deleteDetail(input._id)}
+          onCreate={input => this.createDetail(input)}
+          onUpdate={input => this.updateDetail(input, input._id)}
+          onDelete={input => this.deleteDetail(input._id)}
         />
       </Fragment>
-    )
+    );
   }
 }

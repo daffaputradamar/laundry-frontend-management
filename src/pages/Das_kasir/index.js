@@ -54,7 +54,7 @@ export default class Daskasir extends React.Component {
             <Grid.Row stretched>
               <Grid.Column>
                 <Segment>
-                  <Table singleLine color="red" inverted>
+                  <Table singleLine color="red">
                     <Table.Header>
                       <Table.Row>
                         <Table.HeaderCell textAlign="left">
@@ -77,7 +77,7 @@ export default class Daskasir extends React.Component {
               </Grid.Column>
               <Grid.Column>
                 <Segment>
-                  <Table singleLine color="yellow" inverted>
+                  <Table singleLine color="yellow">
                     <Table.Header>
                       <Table.Row>
                         <Table.HeaderCell textAlign="left">
@@ -100,7 +100,7 @@ export default class Daskasir extends React.Component {
                   </Table>
                 </Segment>
                 <Segment>
-                  <Table singleLine color="teal" inverted>
+                  <Table singleLine color="teal">
                     <Table.Header>
                       <Table.Row>
                         <Table.HeaderCell>
@@ -126,7 +126,7 @@ export default class Daskasir extends React.Component {
                   </Table>
                 </Segment>
                 <Segment>
-                  <Table singleLine color="olive" inverted>
+                  <Table singleLine color="olive">
                     <Table.Header>
                       <Table.Row>
                         <Table.HeaderCell textAlign="left">

@@ -1,18 +1,18 @@
-import React, { Component, Fragment } from "react"
-import { Link } from "react-router-dom"
-import { Button, Header } from "semantic-ui-react"
-import DataTable from "../../components/DataTable2"
-import ErrorMessage from "../../components/ErrorMessage"
-import { MemberService } from "../../services/MemberService"
-import { StatusService } from "../../services/StatusService"
-import { TransactionService } from "../../services/TransactionService"
+import React, { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
+import { Button, Header } from "semantic-ui-react";
+import DataTable from "../../components/DataTable2";
+import ErrorMessage from "../../components/ErrorMessage";
+import { MemberService } from "../../services/MemberService";
+import { StatusService } from "../../services/StatusService";
+import { TransactionService } from "../../services/TransactionService";
 
 interface IState {
-  transaction: ITransaction[]
-  members: IMember[]
-  statuss: IStatus[]
-  loading: boolean
-  error?: Error
+  transaction: ITransaction[];
+  members: IMember[];
+  statuss: IStatus[];
+  loading: boolean;
+  error?: Error;
 }
 
 const fields: IField[] = [
@@ -20,21 +20,21 @@ const fields: IField[] = [
     name: "invoice",
     label: "Invoice",
     // validations: ["required"],
-    hideForm: true,
+    hideForm: true
   },
   {
     name: "dateIn",
     label: "Tgl Masuk",
     type: "date",
     // validations: ["required"],
-    hideForm: true,
+    hideForm: true
   },
   {
     name: "dateOut",
     type: "date",
     label: "Tgl Ambil",
     // validations: ["required"],
-    hideForm: true,
+    hideForm: true
   },
   {
     name: "member",
@@ -44,8 +44,8 @@ const fields: IField[] = [
     optionData: {
       data: [],
       textKey: "member_name",
-      valueKey: "_id",
-    },
+      valueKey: "_id"
+    }
   },
   {
     name: "user",
@@ -54,27 +54,27 @@ const fields: IField[] = [
     optionData: {
       data: [],
       textKey: "username",
-      valueKey: "_id",
+      valueKey: "_id"
     },
-    hideForm: true,
+    hideForm: true
   },
   {
     name: "discount",
     label: "Diskon",
     // validations: ["required"],
-    hideForm: true,
+    hideForm: true
   },
   {
     name: "total",
     label: "Total",
     // validations: ["required"],
-    hideForm: true,
+    hideForm: true
   },
   {
     name: "grandTotal",
     label: "Grand Total",
     // validations: ["required"],
-    hideForm: true,
+    hideForm: true
   },
   // {
   //   name: "recipient",
@@ -94,10 +94,10 @@ const fields: IField[] = [
     optionData: {
       data: [],
       textKey: "status_name",
-      valueKey: "_id",
-    },
-  },
-]
+      valueKey: "_id"
+    }
+  }
+];
 
 export default class Transaction extends Component<{}, IState> {
   [x: string]: any;
@@ -105,57 +105,57 @@ export default class Transaction extends Component<{}, IState> {
     transaction: [],
     members: [],
     statuss: [],
-    loading: false,
-  }
+    loading: false
+  };
 
-  public transactionService = new TransactionService()
-  public memberService = new MemberService()
-  public statusService = new StatusService()
+  public transactionService = new TransactionService();
+  public memberService = new MemberService();
+  public statusService = new StatusService();
 
   public componentDidMount() {
-    this.getTransaction()
-    this.getMember()
-    this.getStatus()
+    this.getTransaction();
+    this.getMember();
+    this.getStatus();
   }
 
   public getMember() {
-    this.memberService.get().then((members) => this.setState({ members }))
+    this.memberService.get().then(members => this.setState({ members }));
   }
   public getStatus() {
-    this.statusService.get().then((statuss) => this.setState({ statuss }))
+    this.statusService.get().then(statuss => this.setState({ statuss }));
   }
 
   public getTransaction() {
-    this.setState({ loading: true })
+    this.setState({ loading: true });
     this.transactionService
       .get()
-      .then((transaction) => this.setState({ transaction }))
-      .catch((error) => this.setState({ error }))
-      .finally(() => this.setState({ loading: false }))
+      .then(transaction => this.setState({ transaction }))
+      .catch(error => this.setState({ error }))
+      .finally(() => this.setState({ loading: false }));
   }
 
   public createTransaction(input: ITransaction) {
-    this.setState({ loading: true })
+    this.setState({ loading: true });
     this.transactionService
       .create(input)
       .then(() => this.getTransaction())
-      .catch((error) => this.setState({ error, loading: false }))
+      .catch(error => this.setState({ error, loading: false }));
   }
 
   public updateTransaction(input: ITransaction, id: string) {
-    this.setState({ loading: true })
+    this.setState({ loading: true });
     this.transactionService
       .update(input, id)
       .then(() => this.getTransaction())
-      .catch((error) => this.setState({ error, loading: false }))
+      .catch(error => this.setState({ error, loading: false }));
   }
 
   public deleteTransaction(id: string) {
-    this.setState({ loading: true })
+    this.setState({ loading: true });
     this.transactionService
       .delete(id)
       .then(() => this.getTransaction())
-      .catch((error) => this.setState({ error, loading: false }))
+      .catch(error => this.setState({ error, loading: false }));
   }
 
   public renderAdditionalAction(transaction: ITransaction) {
@@ -180,23 +180,23 @@ export default class Transaction extends Component<{}, IState> {
           />
         </Link>
       </Fragment>
-    ) : null
+    ) : null;
   }
 
   public setOptionsData() {
-    fields[3].optionData!.data = this.state.members
+    fields[3].optionData!.data = this.state.members;
   }
   public setOptionsData2() {
-    fields[8].optionData!.data = this.state.statuss
+    fields[8].optionData!.data = this.state.statuss;
   }
 
   public render() {
-    this.setOptionsData()
-    this.setOptionsData2()
+    this.setOptionsData();
+    this.setOptionsData2();
     return (
       <Fragment>
         <Header
-          content="Transakasi"
+          content="Transaksi"
           subheader="Klik Tabel untuk melakukan perubahan data"
         />
         <ErrorMessage
@@ -211,14 +211,14 @@ export default class Transaction extends Component<{}, IState> {
           data={this.state.transaction}
           loading={this.state.loading}
           fields={fields}
-          onCreate={(input) => this.createTransaction(input)}
-          onUpdate={(input) => this.updateTransaction(input, input._id)}
-          onDelete={(input) => this.deleteTransaction(input._id)}
-          additionalAction={(transaction) =>
+          onCreate={input => this.createTransaction(input)}
+          onUpdate={input => this.updateTransaction(input, input._id)}
+          onDelete={input => this.deleteTransaction(input._id)}
+          additionalAction={transaction =>
             this.renderAdditionalAction(transaction)
           }
         />
       </Fragment>
-    )
+    );
   }
 }

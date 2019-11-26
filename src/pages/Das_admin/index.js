@@ -19,12 +19,19 @@ export default class Dasadmin extends React.Component {
   }
 
   componentDidMount() {
+    const dateNow = new Date();
+    const month = dateNow.getMonth() + 1;
+    const year = dateNow.getFullYear();
     Promise.all([
       axios.get(`${serviceUser}/api/v1/dashboard/pemasukan/`),
-      axios.get(`${serviceUser}/api/v1/mreportItem/salary?m=5&y=2019`),
-      axios.get(`${serviceUser}/api/v1/mreportItem/outcome?m=5&y=2019`),
+      axios.get(
+        `${serviceUser}/api/v1/mreportItem/salary?m=${month}&y=${year}`
+      ),
+      axios.get(
+        `${serviceUser}/api/v1/mreportItem/outcome?m=${month}&y=${year}`
+      ),
       axios.get(`${serviceTransact}/api/v1/transaction/`),
-      axios.get(`${serviceUser}/api/v1/mreportItem/item?m=5&y=2019`)
+      axios.get(`${serviceUser}/api/v1/mreportItem/item?m=${month}&y=${year}`)
     ])
       .then(([res1, res2, res3, res4, res5]) =>
         Promise.all([res1.data, res2.data, res3.data, res4.data, res5.data])
@@ -54,7 +61,7 @@ export default class Dasadmin extends React.Component {
             <Grid.Row stretched>
               <Grid.Column>
                 <Segment>
-                  <Table singleLine color="red" inverted>
+                  <Table singleLine color="red">
                     <Table.Header>
                       <Table.Row>
                         <Table.HeaderCell textAlign="left">
@@ -82,7 +89,7 @@ export default class Dasadmin extends React.Component {
                     </Table.Body>
                   </Table>
                   <p />
-                  <Table singleLine color="orange" inverted>
+                  <Table singleLine color="orange">
                     <Table.Header>
                       <Table.Row>
                         <Table.HeaderCell textAlign="left">
@@ -106,7 +113,7 @@ export default class Dasadmin extends React.Component {
               </Grid.Column>
               <Grid.Column>
                 <Segment>
-                  <Table singleLine color="yellow" inverted>
+                  <Table singleLine color="yellow">
                     <Table.Header>
                       <Table.Row>
                         <Table.HeaderCell textAlign="left">
@@ -135,7 +142,7 @@ export default class Dasadmin extends React.Component {
                   </Table>
                 </Segment>
                 <Segment>
-                  <Table singleLine color="teal" inverted>
+                  <Table singleLine color="teal">
                     <Table.Header>
                       <Table.Row>
                         <Table.HeaderCell>
@@ -161,7 +168,7 @@ export default class Dasadmin extends React.Component {
                   </Table>
                 </Segment>
                 <Segment>
-                  <Table singleLine color="olive" inverted>
+                  <Table singleLine color="olive">
                     <Table.Header>
                       <Table.Row>
                         <Table.HeaderCell textAlign="left">

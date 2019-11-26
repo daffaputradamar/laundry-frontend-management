@@ -1,65 +1,65 @@
-import React, { Component } from "react"
-import { RouteComponentProps } from "react-router"
-import { Button, Card, Form, Header, Input, Loader } from "semantic-ui-react"
-import { Consumer } from "../../App"
-import { LoginService } from "../../services/LoginService"
+import React, { Component } from "react";
+import { RouteComponentProps } from "react-router";
+import { Button, Card, Form, Header, Input, Loader } from "semantic-ui-react";
+import { Consumer } from "../../App";
+import { LoginService } from "../../services/LoginService";
 
 interface IState {
   input: {
     username: string;
     password: string;
-  }
-  loading: boolean
+  };
+  loading: boolean;
 }
 
 export default class Login extends Component<RouteComponentProps, IState> {
   public state: IState = {
     input: {
       username: "",
-      password: "",
+      password: ""
     },
-    loading: false,
-  }
+    loading: false
+  };
 
-  public loginService = new LoginService()
+  public loginService = new LoginService();
 
   // public redirectIfAuthenticated(isLoggedIn: boolean) {
   //   if (isLoggedIn) this.props.history.push("/")
   // }
   public redirectIfAuthenticated(isLoggedIn: boolean) {
-    if (isLoggedIn) this.props.history.push("/")
+    if (isLoggedIn) this.props.history.push("/");
   }
 
   public changeValue(value: string, name: "username" | "password") {
-    const { input } = this.state
-    input[name] = value
-    this.setState({ input })
+    const { input } = this.state;
+    input[name] = value;
+    this.setState({ input });
   }
 
   public resetValue() {
-    const { input } = this.state
-    input.password = ""
-    this.setState({ input })
+    const { input } = this.state;
+    input.password = "";
+    this.setState({ input });
   }
 
   public login(context: IAppContext) {
-    const { username, password } = this.state.input
+    const { username, password } = this.state.input;
 
-    this.setState({ loading: true })
+    this.setState({ loading: true });
     this.loginService
       .login(username, password)
-      .then((data) => {
-        this.setState({ loading: false })
+      .then(data => {
+        this.setState({ loading: false });
         if (data.token) {
-          context.setToken(data.token)
-          context.setUser(data.user!)
-          this.props.history.push("/")
+          context.setToken(data.token);
+          context.setUser(data.user!);
+          this.props.history.push("/");
         } else {
-          this.resetValue()
-          alert("username atau password salah")
+          this.resetValue();
+          alert("username atau password salah");
         }
       })
-      .catch((error) => console.log("error nih", error))
+      .catch(error => console.log("error nih", error));
   }
 
   public getLoginButtonText() {
@@ -67,20 +67,20 @@ export default class Login extends Component<RouteComponentProps, IState> {
       <Loader active inline inverted size="small" />
     ) : (
       "Masuk"
-    )
+    );
   }
 
   public render() {
     return (
       <Consumer>
-        {(context) => {
-          this.redirectIfAuthenticated(context.isLoggedIn())
+        {context => {
+          this.redirectIfAuthenticated(context.isLoggedIn());
           return (
             <div style={styles.container}>
               <Card>
                 <Card.Content>
-                  <Card.Header textAlign="center">
-                    <Header content="QLaundry" icon="user circle" />
+                  <Card.Header>
+                    <Header content="Landry Pintar" icon="user circle" />
                   </Card.Header>
                 </Card.Content>
                 <Card.Content>
@@ -89,7 +89,7 @@ export default class Login extends Component<RouteComponentProps, IState> {
                       <Input
                         label="Username"
                         value={this.state.input.username}
-                        onChange={(event) =>
+                        onChange={event =>
                           this.changeValue(event.target.value, "username")
                         }
                       />
@@ -99,7 +99,7 @@ export default class Login extends Component<RouteComponentProps, IState> {
                         label="Password"
                         type="password"
                         value={this.state.input.password}
-                        onChange={(event) =>
+                        onChange={event =>
                           this.changeValue(event.target.value, "password")
                         }
                       />
@@ -116,10 +116,10 @@ export default class Login extends Component<RouteComponentProps, IState> {
                 </Card.Content>
               </Card>
             </div>
-          )
+          );
         }}
       </Consumer>
-    )
+    );
   }
 }
 
@@ -128,9 +128,9 @@ const styles = {
     height: "100%",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   form: {
-    marginTop: 15,
-  },
-}
+    marginTop: 15
+  }
+};
