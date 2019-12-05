@@ -246,9 +246,8 @@ function App() {
                       <List>
                         <List.Item>
                           <List.Header>
-                            Jangan lupa cek proses laundry-mu!
+                            Jangan lupa cek proses laundry-mu ya!
                           </List.Header>
-                          laundry-member.herokuapp.com/proses
                         </List.Item>
                         <List.Item>
                           Masukkan kode invoice pada kolom pencarian, kemudian
